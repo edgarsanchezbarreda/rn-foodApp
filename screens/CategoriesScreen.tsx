@@ -12,15 +12,17 @@ export interface ScreenNavigation {
 const CategoriesScreen: React.FC<ScreenNavigation> = ({ navigation }) => {
     const renderCategoryItem = (itemData: ListRenderItemInfo<Category>) => {
         const navigationHandler = () => {
-            navigation.navigate('Meals Overview', {
+            navigation.navigate('MealsOverview', {
                 categoryId: itemData.item.id,
             });
         };
 
+        const item = itemData.item;
+
         return (
             <CategoryGridTile
-                title={itemData.item.title}
-                color={itemData.item.color}
+                title={item.title}
+                color={item.color}
                 onPress={navigationHandler}
             />
         );
