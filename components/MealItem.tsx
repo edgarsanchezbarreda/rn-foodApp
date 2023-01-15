@@ -7,9 +7,21 @@ import {
     Platform,
 } from 'react-native';
 import React from 'react';
-import Meal from '../models/meal';
+import MealDetails from './MealDetails';
 
-const MealItem: React.FC<Meal> = ({
+export interface MealItemProps {
+    id?: string;
+    title?: string;
+    imageUrl?: string;
+    duration?: number;
+    complexity?: string;
+    affordability?: string;
+    onPress?: () => void;
+    style?: object;
+    textStyle?: object;
+}
+
+const MealItem: React.FC<MealItemProps> = ({
     title,
     imageUrl,
     duration,
@@ -32,17 +44,12 @@ const MealItem: React.FC<Meal> = ({
                         />
                         <Text style={styles.title}>{title}</Text>
                     </View>
-                    <View style={styles.details}>
-                        <Text style={styles.detailItem}>
-                            DURATION: {duration}m
-                        </Text>
-                        <Text style={styles.detailItem}>
-                            {complexity?.toUpperCase()}
-                        </Text>
-                        <Text style={styles.detailItem}>
-                            {affordability?.toUpperCase()}
-                        </Text>
-                    </View>
+                    <MealDetails
+                        id={title}
+                        duration={duration}
+                        complexity={complexity}
+                        affordability={affordability}
+                    />
                 </View>
             </Pressable>
         </View>
@@ -72,16 +79,6 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.35,
         shadowOffset: { width: 0, height: 2 },
         shadowRadius: 16,
-    },
-    details: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        padding: 8,
-        justifyContent: 'center',
-    },
-    detailItem: {
-        marginHorizontal: 4,
-        fontSize: 12,
     },
     innerContainer: {
         borderRadius: 8,

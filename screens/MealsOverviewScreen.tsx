@@ -4,7 +4,6 @@ import { MEALS, CATEGORIES } from '../data/dummy-data';
 import { ScreenNavigation } from './CategoriesScreen';
 import MealItem from '../components/MealItem';
 import Meal from '../models/meal';
-import MealDetail from './MealDetail';
 
 const MealsOverviewScreen: React.FC<ScreenNavigation> = ({
     navigation,
